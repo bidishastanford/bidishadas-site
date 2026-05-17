@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Video {
+  id: string;
+  title: string;
+}
+
+const microlearning: Video[] = [
+  { id: 'J_cDOIannps', title: 'The Additional FSIs for Pension Funds' },
+  { id: 'Lc0OZZE_i3Q', title: 'Insurance Corporations Sectoral Financial Statements' },
+  { id: 'R77a2cc0RkA', title: 'The Other Financial Corporations Sector' },
+  { id: 'tqqm7u719Q4', title: 'Household Sector FSIs' },
+];
+
+const summerSchool: Video[] = [
+  { id: 'TEF2j40p2TY', title: 'IMF Summer School: Monetary and Financial Statistics' },
+];
+
+const analyticalCorner: Video[] = [
+  { id: 'BYgOQhBDBVo', title: 'Does Mobile Money Count as Money? — Spring Meetings 2022' },
+];
+
+function thumb(id: string): string {
+  return `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+}
+
+function watchUrl(id: string): string {
+  return `https://www.youtube.com/watch?v=${id}`;
+}
+---
+<BaseLayout title="Media — Bidisha Das">
+  <h1>Media</h1>
+
+  <h2>IMF Microlearning Videos</h2>
+  <p>
+    Short educational videos on Financial Soundness Indicators (FSIs) — macroprudential
+    statistics used to monitor the health and stability of financial institutions.
+  </p>
+  <div class="video-grid">
+    {microlearning.map(v => (
+      <a class="video-card" href={watchUrl(v.id)} target="_blank" rel="noopener" aria-label={`Watch on YouTube: ${v.title}`}>
+        <div class="video-thumb">
+          <img src={thumb(v.id)} alt="" loading="lazy" />
+          <span class="play-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </div>
+        <span class="video-title">{v.title}</span>
+      </a>
+    ))}
+  </div>
+
+  <h2>IMF Summer School: Monetary and Financial Statistics</h2>
+  <p>
+    Free online videos and webinars hosted by the IMF Institute for Capacity Development,
+    covering central bank surveys, sectoral accounts, and the impact of fintech and climate
+    on financial statistics.
+  </p>
+  <div class="video-grid">
+    {summerSchool.map(v => (
+      <a class="video-card" href={watchUrl(v.id)} target="_blank" rel="noopener" aria-label={`Watch on YouTube: ${v.title}`}>
+        <div class="video-thumb">
+          <img src={thumb(v.id)} alt="" loading="lazy" />
+          <span class="play-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </div>
+        <span class="video-title">{v.title}</span>
+      </a>
+    ))}
+  </div>
+
+  <h2>IMF Analytical Corner</h2>
+  <p>
+    Presentations and Q&amp;A sessions delivered during IMF Spring and Annual Meetings,
+    showcasing original research from IMF staff on global economic issues.
+  </p>
+  <div class="video-grid">
+    {analyticalCorner.map(v => (
+      <a class="video-card" href={watchUrl(v.id)} target="_blank" rel="noopener" aria-label={`Watch on YouTube: ${v.title}`}>
+        <div class="video-thumb">
+          <img src={thumb(v.id)} alt="" loading="lazy" />
+          <span class="play-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="40" height="40" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </div>
+        <span class="video-title">{v.title}</span>
+      </a>
+    ))}
+  </div>
+</BaseLayout>

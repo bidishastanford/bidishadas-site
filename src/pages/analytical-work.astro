@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const policyPapers = [
+  {
+    title: 'Capturing financial innovation: The 2025 SNA and BPM7 response to digital finance',
+    url: 'https://journals.sagepub.com/doi/10.1177/18747655261425014',
+  },
+  {
+    title: 'Is Mobile Money Part of Money? Understanding the Trends and Measurement',
+    url: 'https://www.elibrary.imf.org/view/journals/001/2021/177/article-A001-en.xml',
+  },
+  {
+    title: 'Measuring Financial Access: 10 Years of the IMF Financial Access Survey',
+    url: 'https://www.imf.org/en/publications/departmental-papers-policy-papers/issues/2020/05/12/measuring-financial-access-10-years-of-the-imf-financial-access-survey-49298',
+  },
+];
+
+const statisticalGuidance = [
+  {
+    title: 'F.7 Impact of Fintech on Macroeconomic Statistics',
+    url: 'https://www.imf.org/-/media/files/data/statistics/bpm6/approved-guidance-notes/f7-impact-of-fintech-on-macroeconomic-statistics.pdf',
+  },
+  {
+    title: 'Balance of Payments and International Investment Position Manual, 7th Edition',
+    url: 'https://share.google/n1BriI95eatIoQYbU',
+  },
+];
+
+const reports = [
+  {
+    title: '2021 Special Drawing Rights Allocation — Ex-Post Assessment Report',
+    url: 'https://www.imf.org/en/publications/policy-papers/issues/2023/08/28/2021-special-drawing-rights-allocation-ex-post-assessment-report-538583',
+  },
+  {
+    title: 'World Bank International Debt Statistics 2019',
+    url: 'https://datatopics.worldbank.org/debt/pdf/ids-2019.pdf',
+  },
+  {
+    title: 'World Bank International Debt Statistics 2018',
+    url: 'https://databankfiles.worldbank.org/public/ddpext_download/site-content/IDS-2018.pdf',
+  },
+  {
+    title: 'Cambodia: Report on the Observance of Standards and Codes — Data Module',
+    url: 'https://www.elibrary.imf.org/view/journals/002/2026/062/002.2026.issue-062-en.xml?cid=574447-com-dsp-crossref',
+  },
+  {
+    title: 'Nepal: Technical Assistance Report — Financial Sector Stability Review',
+    url: 'https://www.imf.org/en/publications/cr/issues/2023/10/03/nepal-technical-assistance-report-financial-sector-stability-review-539970',
+  },
+  {
+    title: 'Curaçao and Sint Maarten: Report on the Financial Soundness Indicators',
+    url: 'https://www.imf.org/en/publications/high-level-summary-technical-assistance-reports/issues/2023/06/16/curaao-and-sint-maarten-report-on-the-financial-soundness-indicators-534853',
+  },
+];
+
+const blogs = [
+  {
+    title: 'Are South Asian countries sinking into a debt trap?',
+    outlet: 'World Bank Blogs',
+    url: 'https://blogs.worldbank.org/en/opendata/are-south-asian-countries-sinking-debt-trap',
+  },
+  {
+    title: 'Mobile Money Spreads to Asia',
+    outlet: 'IMF Blog',
+    url: 'https://www.imf.org/en/blogs/articles/2019/09/30/mobile-money-spreads-to-asia',
+  },
+];
+---
+<BaseLayout title="Publications & Reports — Bidisha Das">
+  <h1>Publications &amp; Reports</h1>
+  <p>
+    A selection of policy papers, statistical guidance, country reports, and shorter
+    pieces written or co-authored across roles at the IMF and World Bank.
+  </p>
+
+  <h2>Policy Papers</h2>
+  <ul class="work-list">
+    {policyPapers.map(p => (
+      <li><a href={p.url} target="_blank" rel="noopener">{p.title}</a></li>
+    ))}
+  </ul>
+
+  <h2>Statistical Guidance</h2>
+  <ul class="work-list">
+    {statisticalGuidance.map(p => (
+      <li><a href={p.url} target="_blank" rel="noopener">{p.title}</a></li>
+    ))}
+  </ul>
+
+  <h2>Reports</h2>
+  <ul class="work-list">
+    {reports.map(p => (
+      <li><a href={p.url} target="_blank" rel="noopener">{p.title}</a></li>
+    ))}
+  </ul>
+
+  <h2>Blogs</h2>
+  <ul class="work-list">
+    {blogs.map(p => (
+      <li>
+        <a href={p.url} target="_blank" rel="noopener">{p.title}</a>
+        <span class="role-dates"> — {p.outlet}</span>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

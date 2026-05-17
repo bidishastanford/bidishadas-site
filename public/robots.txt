@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bidishadas.com/sitemap-index.xml

@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const roles = [
+  {
+    org: 'International Monetary Fund',
+    dates: 'May 2018 – Present',
+    body: `Leads research and policy on the future of money — crypto assets, stablecoins, central bank digital currencies, and tokenization. Works with central bank governors and finance ministry officials on data frameworks. Coordinates G20-level efforts across 24 economies on digital money. Product owner of International Financial Statistics and manager of the Financial Sector Stability Fund.`,
+  },
+  {
+    org: 'World Bank',
+    dates: 'June 2016 – May 2018',
+    body: `Worked on sovereign debt and private sector investment climate. Contributed to International Debt Statistics and the Doing Business Report, providing evidence on regulatory frameworks and investment climate across economies.`,
+  },
+  {
+    org: 'Government of India',
+    dates: 'March 2015 – September 2015',
+    body: `External consultant to the Competition Commission of India. Developed curriculum and materials for a self-paced competition course used in capacity building for the country's new antitrust regulator.`,
+  },
+  {
+    org: 'AZB & Partners',
+    dates: 'June 2011 – September 2014',
+    body: `Built the competition economics practice as India's antitrust regime took shape. Advised on transactions exceeding $1 billion before the Competition Commission of India, and contributed to India's first Google investigation — a landmark digital markets case.`,
+  },
+  {
+    org: 'Economic Laws Practice',
+    dates: 'June 2009 – June 2011',
+    body: `Advised the Government of India and multilateral institutions (WTO, UNESCAP, UNCTAD) on trade and regulatory policy, including tariff strategy, dispute settlement, and India's global trading system engagement.`,
+  },
+];
+---
+<BaseLayout title="Experience — Bidisha Das">
+  <h1>Experience</h1>
+  {roles.map(r => (
+    <div class="role">
+      <div class="role-header">
+        <h3>{r.org}</h3>
+        <span class="role-dates">{r.dates}</span>
+      </div>
+      <p>{r.body}</p>
+    </div>
+  ))}
+</BaseLayout>

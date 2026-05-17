@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { XMLParser } from 'fast-xml-parser';
+
+const FEED_URL = 'https://byteisha.substack.com/feed';
+
+interface Post {
+  title: string;
+  link: string;
+  pubDate: string;
+  description?: string;
+  image?: string;
+}
+
+let posts: Post[] = [];
+let fetchError: string | null = null;
+
+function firstImage(html: string | undefined): string | undefined {
+  if (!html) return undefined;
+  const m = html.match(/<img[^>]+src=["']([^"']+)["']/i);
+  return m ? m[1] : undefined;
+}
+
+try {
+  const res = await fetch(FEED_URL);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const xml = await res.text();
+  const parser = new XMLParser({ ignoreAttributes: false });
+  const parsed = parser.parse(xml);
+  const items = parsed?.rss?.channel?.item ?? [];
+  const arr = Array.isArray(items) ? items : [items];
+  posts = arr.slice(0, 20).map((it: any) => {
+    const description = typeof it.description === 'string' ? it.description : undefined;
+    const enclosure = it.enclosure?.['@_url'];
+    return {
+      title: String(it.title ?? ''),
+      link: String(it.link ?? ''),
+      pubDate: String(it.pubDate ?? ''),
+      description,
+      image: enclosure || firstImage(description),
+    };
+  });
+} catch (err: any) {
+  fetchError = err?.message ?? 'Could not load posts';
+}
+
+function formatDate(d: string): string {
+  const date = new Date(d);
+  if (isNaN(date.getTime())) return d;
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function excerpt(html: string | undefined, maxLen = 220): string {
+  if (!html) return '';
+  const text = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  return text.length > maxLen ? text.slice(0, maxLen).replace(/\s\S*$/, '') + '…' : text;
+}
+---
+<BaseLayout
+  title="Policy Commentary — Bidisha Das"
+  description="Policy commentary by Bidisha Das on the future of money, data, and the technologies reshaping both — crypto, stablecoins, CBDCs, tokenization, and financial data."
+>
+  <h1>Policy Commentary</h1>
+  <p>
+    I write at <a href="https://byteisha.substack.com" target="_blank" rel="noopener">Byteisha on Substack</a>
+    on the future of money, data, and the technologies reshaping both.
+  </p>
+
+  {fetchError && (
+    <p><em>Posts could not be loaded ({fetchError}). Visit Substack directly.</em></p>
+  )}
+
+  {posts.map(p => (
+    <article class="post">
+      {p.image && (
+        <a href={p.link} target="_blank" rel="noopener" class="post-thumb">
+          <img src={p.image} alt={p.title} loading="lazy" />
+        </a>
+      )}
+      <div class="post-body">
+        <span class="date">{formatDate(p.pubDate)}</span>
+        <h3><a href={p.link} target="_blank" rel="noopener">{p.title}</a></h3>
+        {p.description && <p>{excerpt(p.description)}</p>}
+      </div>
+    </article>
+  ))}
+</BaseLayout>
