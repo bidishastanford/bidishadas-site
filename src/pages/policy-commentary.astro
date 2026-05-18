@@ -65,6 +65,12 @@ function excerpt(html: string | undefined, maxLen = 220): string {
     I write at <a href="https://byteisha.substack.com" target="_blank" rel="noopener">Byteisha on Substack</a>
     on the future of money, data, and the technologies reshaping both.
   </p>
+  <p class="disclaimer">
+    <strong>Disclaimer:</strong> All views expressed here are strictly my own and do not
+    reflect those of any institution, employer, affiliate, or organization I am
+    associated with. This blog is a personal project and has no connection to my
+    professional responsibilities.
+  </p>
 
   {fetchError && (
     <p><em>Posts could not be loaded ({fetchError}). Visit Substack directly.</em></p>

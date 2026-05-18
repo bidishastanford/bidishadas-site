@@ -399,6 +399,20 @@ p { margin: 0.85em 0; color: var(--color-text-soft); }
 
 .lightbox-close:hover { opacity: 1; }
 
+.disclaimer {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  border-left: 3px solid var(--color-border-soft);
+  padding: 0.6rem 0 0.6rem 1rem;
+  margin: 1.25rem 0 2rem;
+  line-height: 1.5;
+}
+
+.disclaimer strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
 @media (max-width: 600px) {
   .page-banner { aspect-ratio: 4 / 3; }
 }
