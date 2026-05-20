@@ -413,6 +413,116 @@ p { margin: 0.85em 0; color: var(--color-text-soft); }
   font-weight: 600;
 }
 
+.notes-strip {
+  margin: 1.5rem 0 2.5rem;
+}
+
+.notes-strip-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.notes-strip-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+.notes-strip-more {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: none;
+}
+
+.notes-strip-more:hover { color: var(--color-accent); }
+
+.notes-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(260px, 300px);
+  gap: 0.9rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.75rem;
+  scrollbar-width: thin;
+}
+
+.notes-carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.notes-carousel::-webkit-scrollbar-thumb {
+  background: var(--color-border-soft);
+  border-radius: 3px;
+}
+
+.note-card {
+  scroll-snap-align: start;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border-soft);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+
+.note-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
+}
+
+.note-date {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.note-body {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.note-cta {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+}
+
+.posts-more {
+  text-align: center;
+  margin: 2rem 0 0;
+}
+
+.posts-more a {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+  border-bottom: none;
+}
+
+.posts-more a:hover { text-decoration: underline; }
+
 @media (max-width: 600px) {
   .page-banner { aspect-ratio: 4 / 3; }
 }
