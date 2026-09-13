@@ -208,6 +208,16 @@ p { margin: 0.85em 0; color: var(--color-text-soft); }
   text-transform: uppercase;
 }
 
+.hero .tagline .job-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-text-soft);
+  line-height: 1.7;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .hero .lede {
   margin: 0;
   font-size: 1.15rem;
